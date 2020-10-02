@@ -6,13 +6,21 @@ https://discord.com/oauth2/authorize?client_id=761099279141175326&scope=bot&perm
 
 
 # AVALIBLE COMMANDS: 
+
 .fatfuck - do tha phatphuck
+
 .rat - big rat
+
 .cmd - redirects to this page for commands 
+
 .help - help regarding the not
+
 .about - info regarding the bot
+
 .suffix - epic suffix
+
 .poggers - pogchamp
+
 .allah - praise allah!
 
 
