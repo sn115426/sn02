@@ -1,7 +1,21 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
+
 const prefix = '.'
+
+const fs = require('fs')
+
+client.commands = new Discord.Collection();
+
+const commandFiles = fs.readdirSync('./commands/').filter(file => file.endsWith('.js'))
+for(const file of commandFiles){
+const command = require(`./commands/${file}`);
+
+client.commands.set(command.name, command);
+
+}
+
 
 client.once('ready' , () => {
    console.log('sn02 is active!');
@@ -30,13 +44,17 @@ client.on('message', message =>{
     }else if(command === 'poggers'){
     message.channel.send('https://tenor.com/view/poggers-anime-girls-kissing-pog-gif-18050577')
     }else if(command === 'suffix'){
-    message.channel.send('t >ᴇᴘɪᴄ ꜱᴛᴜғғɪ✗» ʌгᴇѕ+ « ᴋᴀᴍɪ ʙʟᴜᴇ ᴏɴ ᴛᴏᴘ » » ˢⁿᵒʷ⏐ НεᎮнᗩεѕƭυѕ » ʙᴀᴄᴋᴅᴏᴏʀᴇᴅ | ᴍᴇᴏᴡ » ᴜɴɪᴄᴏʀɴɢᴏᴅ.ɢɢ ꜱᴇᴘᴘᴜᴋᴜ | ʜᴜᴢᴜɴɪɢʀᴇᴇɴ.ɢɢtm » ʙᴀᴄᴋᴄʟɪᴇɴᴛtm » ɴᴏᴜ ʟᴇᴀᴋ ⏐ ғᴏʀɢᴇʀᴀᴛ ♡ | ӨBΛMΛ ᄃᄂIΣПƬ - ᴇʟᴇᴍᴇɴᴛᴀʀꜱ.ᴄᴏᴍ 》ᴏꜱɪʀɪꜱ | WÔÔKÏÊ ÇLîëÑTtm {ʀᴀɪᴏɴᴋᴇᴋ} ッ Ｒ００Ｔ｜ ᴠᴏɪᴅ ᴄʟɪᴇɴᴛ ｜ ᴋᴀᴍɪ ｜ ʳᴜˢʰᴇʳʰᴀᶜᵏ ｜ ⓌⓌⒺ ｜ ｉｍｐａｃｔ｜ ꜰᴜᴛᴜʀᴇtm ⓖⓞⓛⓓ ｜ 卂丂ㄩ几卂ᴄʟɪᴇɴᴛ ｜ꄘꆂ꒓ꁍꍟꑛꋫꇓ ｜ ʳᴀｔᴄʟɪᴇɴᴛ ｜ ᴀᴘᴏʟʟʏᴏɴ ｜ ᴋᴀᴍɪ ʙʟᴜᴇ ❘ ᴾᴼᴾᴮᴼᴮ ᶜᴸᴵᴱᴺᵀ ⏐ ɢᴀʏ ⏐ c l i e n t | B a L l C l i E n T | ᖴEᗰᗷOYᕼᗩᑕK.ᑕᑕ | ᶠᵉᵐᵇᵒʸʰᵃᶜᵏ.ᶜᶜ | ᴠᴏɪᴅᴇᴅᴄʟɪᴇɴᴛ | Fᵢₙₜₐ ₕₐₓ | LιȥαɾԃKιɳɠ.ƈƈ | ѕ¢нσσℓѕнσσтєя.мρ4 | 千乇爪乃ㄖㄚ千尺丨ᗪ卂ㄚ卄卂乂乂 | ᗰYᑎIGGᗩOᗷᗩᗰᗩ.Eᘔ | 911匚ㄥ丨乇几ㄒ.匚匚 | ßïllñ¥êHåk§ | A̾s̾i̾a̾n̾D̾o̾g̾E̾a̾t̾e̾r̾.̾m̾p̾3̾ | ⑨①①ⓌⓐⓢⒶⒻⓤⓢⓢ | 🄺🄾🄾🄻🄺🄸🄳🅂🄺🄻🅄🄱.🄲🄲 | ⱧØⱠɎ₥ØⱠɎ₵ⱧɆɆ₴Ɇ₲Ɽ₳₦ØⱠⱠł | ＭｙＫ０ＫＫｌｉｅｎｔ| ᴜɴɪᴄᴏʀɴɢᴏᴅ.ɢɢ ꜱᴇᴘᴘᴜᴋᴜ -ingros- | ʜᴜᴢᴜɴɪɢʀᴇᴇɴ.ɢɢtm » ʙᴀᴄᴋᴄʟɪᴇɴᴛt [ᴀᴛʟᴀꜱ]')
+    client.commands.get('suffix').execute(message, args);
     }else if(command === 'allah'){
     message.channel.send('praise allah https://cdn.discordapp.com/attachments/634286781499572224/752818250085171220/image0.png')
 }else if(command === 'about'){
 message.channel.send('swag bot written in js by sn01. you can contact him on discord at sn01#7441 or at https://github.com/sn0wy01')
+}else if(command === 'ping'){
+message.channel.send('pong')
+}else if (command === 'admin'){
+client.commands.get('admin').execute(message,args);
 }
     });
 
 
-client.login ('NzYxMDk5Mjc5MTQxMTc1MzI2.X3Vq8A.x-ZZY_fnQo5S-BlND0WtDYOLK48');
+client.login ('stop stealing my token lol');
