@@ -5,7 +5,7 @@ you can invite the bot to your server here:
 https://discord.com/oauth2/authorize?client_id=761099279141175326&scope=bot&permissions=2146958847
 
 
-# AVALIBLE COMMANDS: 
+# COMMANDS: 
 
 .fatfuck - do tha phatphuck
 
